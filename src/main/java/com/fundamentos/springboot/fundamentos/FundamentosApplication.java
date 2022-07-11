@@ -56,7 +56,7 @@ public class FundamentosApplication implements CommandLineRunner {
 	}
 
 	private void getInformationJpqFromUser(){
-		LOGGER.info("Usuario con el metodo userRepository.findByUserEmail" +
+/*		LOGGER.info("Usuario con el metodo userRepository.findByUserEmail" +
 				userRepository.findByUserEmail("julie@domain.com")
 		.orElseThrow(()-> new RuntimeException("No se encontro el usuario")));
 
@@ -70,6 +70,20 @@ public class FundamentosApplication implements CommandLineRunner {
 
 		LOGGER.info("Usuario con query method findByEmailAndName" + userRepository.findByEmailAndName("daniela@domain.com", "Daniela")
 				.orElseThrow(()-> new RuntimeException("usuario no encontrado")));
+
+		userRepository.findByNameLike("%J%")
+				.stream()
+				.forEach(user -> LOGGER.info("usuario findByNameLike" + user));
+
+		userRepository.findByNameOrEmail("user10", null)
+				.stream()
+				.forEach(user -> LOGGER.info("usuario findByNameOrEmail" + user));*/
+
+		userRepository.findByBirthDateBetween(LocalDate.of(2021, 03, 01), LocalDate.of(2021, 04, 02))
+		.stream()
+		.forEach(user -> LOGGER.info("usuario con intervalo de fechas" + user));
+
+
 	}
 
 	private void saveUsersInDataBase(){
