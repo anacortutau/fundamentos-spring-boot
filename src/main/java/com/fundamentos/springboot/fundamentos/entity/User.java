@@ -18,7 +18,7 @@ public class User {
 
     @Column(length = 50)
     private String name;
-    @Column(length = 50)
+    @Column(length = 50, unique = true)
     private String email;
 
     private LocalDate birthDate;
@@ -27,6 +27,11 @@ public class User {
     private List<Post> post = new ArrayList<>();
 
     public User() {
+
+    }
+
+    public User(Long id){
+        this.id = id;
     }
 
     public User(String name, String email, LocalDate birthDate) {
